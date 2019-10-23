@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Input;
 using DevExpress.Mvvm;
 using Newtonsoft.Json;
-using OpenProjects.About;
 using OpenProjects.Crypt;
 using OpenProjects.Model;
 using OpenProjects.View;
