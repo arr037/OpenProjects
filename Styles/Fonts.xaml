@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="ProximaRegular">pack://application;,,,/Fonts/#Proxima Nova Regular</FontFamily>
+    <FontFamily x:Key="ProximaSemibold">pack://application;,,,/Fonts/#Proxima Nova Semibold</FontFamily>
+    <FontFamily x:Key="ProximaLight">pack://application;,,,/Fonts/#Proxima Nova Light</FontFamily>
+
+    <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+        <Setter Property="FontFamily" Value="{StaticResource ProximaRegular}" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+
+
+</ResourceDictionary>

@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:OpenProjects.Styles"
+                    xmlns:vm="clr-namespace:OpenProjects.Converters">
+    <vm:AuthConverter x:Key="AuthConverter" />
+
+    <Style TargetType="TextBlock" x:Key="title">
+        <Setter Property="Margin" Value="0 0 0 7" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontFamily" Value="{StaticResource ProximaSemibold}" />
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="MiniDeskriptionStyle">
+        <Setter Property="Margin" Value="0 0 0 7" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="{StaticResource ProximaLight}" />
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="Author">
+        <Setter Property="Margin" Value="0 0 0 7" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="{StaticResource ProximaLight}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Author,Converter={StaticResource AuthConverter}}" Value="null">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="TextBlock" x:Key="Text">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="{StaticResource ProximaRegular}" />
+    </Style>
+
+    <Style TargetType="RichTextBox" x:Key="EditText">
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="{StaticResource ProximaRegular}" />
+    </Style>
+</ResourceDictionary>
