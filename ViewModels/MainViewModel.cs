@@ -151,7 +151,7 @@ namespace OpenProjects.ViewModels
                         about = new View.About();
                         about.DataContext = this;
                         about.ShowDialog();
-                        //Process.Start(new ProcessStartInfo("https://vk.com/arr073099"));
+                        Process.Start(new ProcessStartInfo("https://vk.com/arr073099"));
                     }
                     catch (Exception e)
                     {
