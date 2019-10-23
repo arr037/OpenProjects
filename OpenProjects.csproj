@@ -168,8 +168,6 @@
     <Resource Include="Fonts\ProximaNova-Light.ttf" />
     <Resource Include="Fonts\ProximaNova-Regular.ttf" />
     <Resource Include="Fonts\ProximaNova-Semibold.ttf" />
-    <None Include=".gitattributes" />
-    <None Include=".gitignore" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
