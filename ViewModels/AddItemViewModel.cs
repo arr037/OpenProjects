@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Windows;
 using System.Windows.Input;
 using DevExpress.Mvvm;
 using Microsoft.Win32;
@@ -18,7 +20,7 @@ namespace OpenProjects.ViewModels
         private string _miniDesk = "Краткое описание";
         private string _title = "Новый заголовок";
         private ObservableCollection<Item> Items;
-
+        private OpenFileDialog openFileDialog = new OpenFileDialog();
         public AddItemViewModel()
         {
             Items = File.Exists("Data/Items.json")
@@ -93,8 +95,21 @@ namespace OpenProjects.ViewModels
             {
                 return new DelegateCommand(() =>
                 {
-                    var openFileDialog = new OpenFileDialog();
-                    if (openFileDialog.ShowDialog() == true) FilePath = openFileDialog.FileName;
+                    string currectDirectory = Environment.CurrentDirectory;
+                    openFileDialog.InitialDirectory = currectDirectory;
+                    if (openFileDialog.ShowDialog() == true && openFileDialog.FileName.Contains(currectDirectory))
+                    {
+                        string currectFile = openFileDialog.FileName;
+                        FilePath = currectFile.Remove(0, currectDirectory.Length);
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Ошибка\nВозможно вы пытаетесь открыть файл который не находится в папке с проектом!",
+                            "Ошибка",
+                            MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 });
             }
         }

@@ -94,7 +94,8 @@ namespace OpenProjects.ViewModels
                 {
                     try
                     {
-                        Process.Start(new ProcessStartInfo(item.FilePath));
+                        string ar = item.FilePath.StartsWith("/") ? "/" : null;
+                        Process.Start(new ProcessStartInfo(Environment.CurrentDirectory+ar+item.FilePath));
                     }
                     catch (Exception e)
                     {
@@ -103,12 +104,17 @@ namespace OpenProjects.ViewModels
                 }, item => !item.FilePath.Contains("Выберите путь"));
             }
         }
-
+        /// <summary>
+        /// Закрывает OverLay
+        /// </summary>
         public ICommand CloseDialogWindow
         {
             get { return new DelegateCommand(() => { OverlayService.GetInstance().Close(); }); }
         }
-
+   
+        /// <summary>
+        /// Для создания нового элемента
+        /// </summary>
         public ICommand AddNewItem
         {
             get
@@ -123,6 +129,10 @@ namespace OpenProjects.ViewModels
             }
         }
 
+        /// <summary>
+        /// Редактор данных
+        /// Эта комманда редактирует данные
+        /// </summary>
         public ICommand EditCommand
         {
             get
