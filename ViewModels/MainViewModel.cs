@@ -175,6 +175,7 @@ namespace OpenProjects.ViewModels
                 });
             }
         }
+
         /// <summary>
         /// Открыть ссылку
         /// </summary>
@@ -199,6 +200,19 @@ namespace OpenProjects.ViewModels
             }
         }
 
+        /// <summary>
+        /// Закрыть страницу с описанием
+        /// </summary>
+        public ICommand CloseAboutWindow
+        {
+            get
+            {
+                return new DelegateCommand(() =>
+                {
+                    about.Close();
+                });
+            }
+        }
         #endregion
 
         #region  Voids
