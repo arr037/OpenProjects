@@ -16,14 +16,20 @@ namespace OpenProjects.ViewModels
 {
     public class MainViewModel : BaseVm
     {
+        #region Private Members
+
         private View.About about;
         private Item _selectItem;
         private AddNewItem w;
         private EditItem w1;
 
+        #endregion
+
+        #region Constructor
+
         public MainViewModel()
         {
-            OverlayService.GetInstance().Show = delegate(string str, string str1)
+            OverlayService.GetInstance().Show = delegate (string str, string str1)
             {
                 OverlayService.GetInstance().Text = str;
                 OverlayService.GetInstance().Description = str1;
@@ -41,6 +47,10 @@ namespace OpenProjects.ViewModels
             Messenger.Default.Register<Message>(this, OnMessage);
         }
 
+        #endregion
+
+        #region Public Members
+
         public ObservableCollection<Item> Items { get; set; }
 
         public Item SelectedItem
@@ -52,6 +62,14 @@ namespace OpenProjects.ViewModels
                 RaisePropertyChanged("Changed");
             }
         }
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// Кнопка подробнее
+        /// </summary>
 
         public ICommand AddItem
         {
@@ -68,6 +86,10 @@ namespace OpenProjects.ViewModels
                 }, item => item != null);
             }
         }
+
+        /// <summary>
+        /// Удалить файл/ Элемент
+        /// </summary>
 
         public ICommand RemoveDialogWindow
         {
@@ -86,6 +108,9 @@ namespace OpenProjects.ViewModels
             }
         }
 
+        /// <summary>
+        /// Открывает файл
+        /// </summary>
         public ICommand OpenFile
         {
             get
@@ -95,7 +120,7 @@ namespace OpenProjects.ViewModels
                     try
                     {
                         string ar = item.FilePath.StartsWith("/") ? "/" : null;
-                        Process.Start(new ProcessStartInfo(Environment.CurrentDirectory+ar+item.FilePath));
+                        Process.Start(new ProcessStartInfo(Environment.CurrentDirectory + ar + item.FilePath));
                     }
                     catch (Exception e)
                     {
@@ -104,6 +129,7 @@ namespace OpenProjects.ViewModels
                 }, item => !item.FilePath.Contains("Выберите путь"));
             }
         }
+
         /// <summary>
         /// Закрывает OverLay
         /// </summary>
@@ -111,7 +137,7 @@ namespace OpenProjects.ViewModels
         {
             get { return new DelegateCommand(() => { OverlayService.GetInstance().Close(); }); }
         }
-   
+
         /// <summary>
         /// Для создания нового элемента
         /// </summary>
@@ -149,7 +175,9 @@ namespace OpenProjects.ViewModels
                 });
             }
         }
-
+        /// <summary>
+        /// Открыть ссылку
+        /// </summary>
         public ICommand OpenUrl
         {
             get
@@ -171,6 +199,9 @@ namespace OpenProjects.ViewModels
             }
         }
 
+        #endregion
+
+        #region  Voids
         private void OnMessage(Message message)
         {
             switch (message.MessageType)
@@ -206,21 +237,14 @@ namespace OpenProjects.ViewModels
             }
         }
 
-        public ICommand CloseAboutWindow
-        {
-            get
-            {
-                return  new DelegateCommand(() =>
-                {
-                    about.Close();
-                });
-            }
-        }
 
         private bool GetCheckData(string text)
         {
             if (Items.Any(p => p.Title == text)) return true;
             return false;
         }
+
+        #endregion
+
     }
 }
