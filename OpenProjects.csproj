@@ -57,18 +57,7 @@
   <PropertyGroup>
     <ApplicationIcon>unnamed.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>B7AD0CB941357FC3641012825034F7EE5AAFFDCE</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>OpenProjects_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
+  
   <PropertyGroup>
     <StartupObject>OpenProjects.App</StartupObject>
   </PropertyGroup>
@@ -201,7 +190,6 @@
     <Resource Include="Fonts\ProximaNova-Light.ttf" />
     <Resource Include="Fonts\ProximaNova-Regular.ttf" />
     <Resource Include="Fonts\ProximaNova-Semibold.ttf" />
-    <None Include="OpenProjects_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
